@@ -31,6 +31,7 @@ public class ConsumerInOrder {
 
             Random random = new Random();
 
+            @Override
             public ConsumeOrderlyStatus consumeMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
                 context.setAutoCommit(true);
                 for (MessageExt msg : msgs) {

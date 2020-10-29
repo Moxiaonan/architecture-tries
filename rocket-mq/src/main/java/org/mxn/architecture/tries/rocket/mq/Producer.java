@@ -38,6 +38,7 @@ public class Producer {
             Message msg = new Message("TopicTest", tags[i % tags.length], "KEY" + i, body.getBytes());
 
             SendResult sendResult = producer.send(msg, new MessageQueueSelector() {
+                @Override
                 public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
                     Long id = (Long) arg;  //根据订单id选择发送queue
                     long index = id % mqs.size();

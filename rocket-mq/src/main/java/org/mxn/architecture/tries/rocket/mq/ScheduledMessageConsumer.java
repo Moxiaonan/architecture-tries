@@ -16,6 +16,7 @@ public class ScheduledMessageConsumer {
         consumer.subscribe("TestTopic", "*");
         // 注册消息监听者
         consumer.registerMessageListener(new MessageListenerConcurrently() {
+            @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> messages, ConsumeConcurrentlyContext context) {
                 for (MessageExt message : messages) {
                     // Print approximate delay time period

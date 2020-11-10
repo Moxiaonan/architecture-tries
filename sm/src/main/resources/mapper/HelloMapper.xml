@@ -7,7 +7,25 @@
         <id column="id" property="id"/>
         <result column="name" property="name"/>
     </resultMap>
+    <resultMap id="starResume" type="org.mxn.architecture.tries.sm.entity.StarResume">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <collection property="champions" ofType="org.mxn.architecture.tries.sm.entity.Champion">
+            <id property="id" column="cid"></id>
+            <result property="year" column="year"></result>
+        </collection>
+        <collection property="girls" ofType="org.mxn.architecture.tries.sm.entity.Girl">
+            <id property="id" column="gid"></id>
+            <result property="girl" column="girl"></result>
+        </collection>
+    </resultMap>
     <select id="hello" resultType="org.mxn.architecture.tries.sm.entity.User">
         select id,name from user where id = 1
+    </select>
+    <select id="stars" resultMap="starResume">
+        select
+        u.id,u.`name`,c.id cid,c.`year`,g.id gid,g.girl
+        from `user` u left join champion c on u.`name` = c.`name`
+        left join girl g on u.`name` = g.`name`
     </select>
 </mapper>

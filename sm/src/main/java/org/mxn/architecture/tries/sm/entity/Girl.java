@@ -1,40 +1,18 @@
 package org.mxn.architecture.tries.sm.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
+@Data
+@Accessors(chain = true)
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Girl {
     private Integer id;
     private String name;
     private String girl;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGirl() {
-        return girl;
-    }
-
-    public void setGirl(String girl) {
-        this.girl = girl;
-    }
-
-    @Override
-    public String toString() {
-        return "Girl{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", girl='" + girl + '\'' +
-                '}';
-    }
 }

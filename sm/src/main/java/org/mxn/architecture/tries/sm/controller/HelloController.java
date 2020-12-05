@@ -1,5 +1,8 @@
 package org.mxn.architecture.tries.sm.controller;
 
+import cn.codemao.cloud.core.common.result.Result;
+import cn.codemao.service.platform.supplychain.common.client.WaybillClient;
+import cn.codemao.service.platform.supplychain.common.client.domain.LogisticsDetailItemResponse;
 import org.mxn.architecture.tries.sm.biz.HelloBiz;
 import org.mxn.architecture.tries.sm.entity.StarResume;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +20,14 @@ public class HelloController {
     private static final String defaultWife = "none";
     @Autowired
     HelloBiz helloBiz;
+
+    @Autowired
+    WaybillClient waybillClient;
+
     @Value("${mxn.wife:"+defaultWife+"}")
     private String wife;
+
+
     @GetMapping("/{name}")
     public String hello(@PathVariable("name") String name){
         return helloBiz.hello(name);
@@ -32,5 +41,10 @@ public class HelloController {
     @GetMapping("/wife")
     public String wife(){
         return wife;
+    }
+
+    @GetMapping("/feign-test")
+    public Result<List<LogisticsDetailItemResponse>> getFeign(){
+        return waybillClient.getLogisticsByDeliveryWaybillNo("JDVC05795779572","JDL");
     }
 }

@@ -1,11 +1,17 @@
 spring:
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mxn_test?serverTimezone=Asia/Shanghai
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mxn?serverTimezone=Asia/Shanghai
     username: root
-    password: root
+    password: 666666
     hikari:
       minimum-idle: 1
       maximum-pool-size: 10
+  application:
+    name: mxn-sm
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:5hzHVhWO0rTwt0UtyUL0r77fV0Yen@localhost:8761/eureka/
 mybatis:
   mapper-locations: classpath*:mapper/*.xml

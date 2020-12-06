@@ -9,9 +9,9 @@ spring:
       maximum-pool-size: 10
   application:
     name: mxn-sm
-eureka:
-  client:
-    service-url:
-      defaultZone: http://admin:5hzHVhWO0rTwt0UtyUL0r77fV0Yen@localhost:8761/eureka/
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://admin:5hzHVhWO0rTwt0UtyUL0r77fV0Yen@localhost:8761/eureka/
 mybatis:
   mapper-locations: classpath*:mapper/*.xml

@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 public class HelloBiz {
-//    @Autowired
+    @Autowired
     HelloMapper helloMapper;
 
     @Autowired
@@ -41,7 +41,7 @@ public class HelloBiz {
     }
 
     public void codeTrans() throws Exception{
-        userMapper.insert(new User().setName("james"));
+        int james = userMapper.insert(new User().setName("james"));
         transactionTemplate.executeWithoutResult(transactionStatus -> {
             try {
                 girlMapper.insert(new Girl().setGirl("whore"));

@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.security.PermitAll;
 import java.util.List;
 
 @RestController
@@ -26,16 +28,22 @@ public class HelloController {
 
 
     @GetMapping("/{name}")
+    @ResponseBody
+    @PermitAll
     public String hello(@PathVariable("name") String name){
         return helloBiz.hello(name);
     }
 
     @GetMapping("/stars")
+    @ResponseBody
+    @PermitAll
     public List<StarResume> stars(){
         return helloBiz.stars();
     }
 
     @GetMapping("/wife")
+    @ResponseBody
+    @PermitAll
     public String wife(){
         return wife;
     }

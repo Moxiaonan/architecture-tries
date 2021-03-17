@@ -8,6 +8,7 @@ import org.mxn.architecture.tries.sm.mapper.ChampionMapper;
 import org.mxn.architecture.tries.sm.mapper.GirlMapper;
 import org.mxn.architecture.tries.sm.mapper.HelloMapper;
 import org.mxn.architecture.tries.sm.mapper.UserMapper;
+import org.mxn.architecture.tries.sm.model.PlaysOff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -31,6 +32,12 @@ public class HelloBiz {
     @Autowired
     TransactionTemplate transactionTemplate;
 
+    @Autowired
+    PlaysOff<Champion> playsOff;
+
+    @Autowired
+    PlaysOff<List<Girl>> playsOffGirls;
+
     public String hello(String name){
         User hello = helloMapper.hello();
         return name + ",i m " + hello.toString();
@@ -52,5 +59,13 @@ public class HelloBiz {
                 throw e;
             }
         });
+    }
+
+    public void outPlaysOff(){
+        System.out.println(playsOff.getTypeName());
+    }
+
+    public void outPlaysOffGirls(){
+        System.out.println(playsOffGirls.getTypeName());
     }
 }

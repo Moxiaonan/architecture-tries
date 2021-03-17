@@ -20,4 +20,14 @@ public class AppTest {
             System.out.println("-----error----");
         }
     }
+
+    @Test
+    public void playsOff(){
+        helloBiz.outPlaysOff();
+    }
+
+    @Test
+    public void playsOffGirls(){
+        helloBiz.outPlaysOffGirls();
+    }
 }

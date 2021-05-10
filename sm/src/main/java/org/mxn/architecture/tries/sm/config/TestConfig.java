@@ -1,12 +1,11 @@
 package org.mxn.architecture.tries.sm.config;
 
 import org.mxn.architecture.tries.sm.entity.Champion;
-import org.mxn.architecture.tries.sm.entity.Girl;
+import org.mxn.architecture.tries.sm.model.NetsManager;
 import org.mxn.architecture.tries.sm.model.PlaysOff;
+import org.mxn.architecture.tries.sm.util.SqlPrintInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.List;
 
 /**
  * TODO
@@ -17,11 +16,23 @@ import java.util.List;
 @Configuration
 public class TestConfig {
     @Bean
-    public PlaysOff<List<Girl>> listGirlPo(){
+    public PlaysOff listGirlPo(){
         return new PlaysOff<>();
     }
+
     @Bean
-    public PlaysOff<Champion> championPo(){
-        return new PlaysOff<>();
+    public NetsManager netsManagerOrigin(){
+        return new NetsManager();
+    }
+
+    @Bean
+    public NetsManager<Champion> netsManagerChampion(){
+        new NetsManager<Champion>();
+        return new NetsManager<Champion>();
+    }
+
+    @Bean
+    public SqlPrintInterceptor createSqlPrintInterceptor(){
+        return new SqlPrintInterceptor();
     }
 }

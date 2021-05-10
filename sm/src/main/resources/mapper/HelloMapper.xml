@@ -28,4 +28,29 @@
         from `user` u left join champion c on u.`name` = c.`name`
         left join girl g on u.`name` = g.`name`
     </select>
+    <select id="starChampion" resultMap="starResume">
+        select
+        u.id,u.`name`,c.id cid,c.`year`,g.id gid,g.girl
+        from `user` u left join champion c on u.`name` = c.`name`
+        left join girl g on u.`name` = g.`name`
+        <trim prefix="where">
+            u.`name` in
+            <foreach collection="stars" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+            or u.`name` = #{test}
+        </trim>
+    </select>
+    <select id="starChampion2" resultMap="starResume">
+        select
+        u.id,u.`name`,c.id cid,c.`year`,g.id gid,g.girl
+        from `user` u left join champion c on u.`name` = c.`name`
+        left join girl g on u.`name` = g.`name`
+        <trim prefix="where">
+            u.`name` in
+            <foreach collection="list" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </trim>
+    </select>
 </mapper>

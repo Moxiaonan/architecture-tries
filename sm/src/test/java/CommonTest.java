@@ -191,4 +191,33 @@ public class CommonTest {
     public void testClassT(){
 
     }
+
+
+    @Test
+    public void andCal(){
+        long input = 123L;
+        System.out.println(input & Long.MAX_VALUE);
+    }
+
+    @Test
+    public void bloPram(){
+
+        long maxLong = Integer.MAX_VALUE * 2L;
+//        long n = 280_000_000L;
+//        double p = 0.001;
+        long n = 100_000_000L;
+        double p = 0.001;
+        long size = size(n, p);
+        System.out.println("size = " + size);
+        System.out.println("hash = " + hash(n,size));
+        System.out.println("overhead " + (size > maxLong));
+    }
+
+    private long size(long n,double p){
+        return (long) (-n * Math.log(p) / (Math.log(2) * Math.log(2)));
+    }
+
+    private long hash(long n,long m){
+        return Math.max(1, (int) Math.round((double) m / n * Math.log(2)));
+    }
 }
